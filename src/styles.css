@@ -1,0 +1,74 @@
+body {
+  background: url(//subtlepatterns.com/patterns/scribble_light.png);
+}
+.columns {
+  column-width: 340px;
+  column-gap: 15px;
+  width: 100%;
+  max-width: 1170px;
+  margin: 50px auto;
+}
+ 
+.columns figure {
+  box-shadow: 0 1px 2px rgba(34, 25, 25, 0.4);
+  margin: 0 0px 15px;
+  transition: opacity .4s ease-in-out;
+  display: inline-block;
+}
+ 
+.columns figure img {
+  width: 340px;
+  height: auto;
+}
+  
+.columns:hover figure:not(:hover) {
+  opacity: 0.4;
+}
+
+.episodes-list {
+  max-height: 343px;
+  overflow: auto;
+}
+
+.characters-list td{
+  vertical-align: middle!important;
+}
+
+.characters-list {
+  height: 397px;
+  overflow: auto;
+}
+
+.header {
+  color: #000;
+  margin: 50px auto;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.link:link {
+  text-decoration: none;
+}
+
+.details {
+  border-bottom: solid 1px #000;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+}
+
+.img-cntr {text-align: center;}
+
+.thumbs {
+  height: 80px;
+}
+
+.label-day {
+  text-transform: uppercase; 
+  padding: .2em .6em .2em; 
+}
+
+@media screen and (max-width: 750px) { 
+  .columns { column-gap: 0px; }
+  .columns figure { width: 100%; }
+  .details { border: none!important; }
+}
