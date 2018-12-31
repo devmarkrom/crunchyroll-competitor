@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Axios from 'axios';
 import { Row, Col, Table } from 'react-bootstrap';
+import { loadCharacters, loadEpisodes } from '../api';
 
 class Details extends Component {
     constructor(props){
@@ -16,22 +16,18 @@ class Details extends Component {
     }
 
     getInfo(id) {
-        Axios({
-            method: 'GET',
-            url: 'https://api.jikan.moe/v3/anime/' + id + '/characters_staff'
-        }).then(res=>{
-            this.setState({
-                characters: res.data.characters
-            })
-        });
-        Axios({
-            method: 'GET',
-            url: 'https://api.jikan.moe/v3/anime/' + id + '/episodes'
-        }).then(res=>{
-            this.setState({
-                episodes: res.data.episodes                
-            })
-        })
+        loadCharacters(id)
+            .then(res=>{
+                this.setState({
+                    characters: res.data.characters
+                })
+            });
+        loadEpisodes(id)
+            .then(res=>{
+                this.setState({
+                    episodes: res.data.episodes                
+                })
+            });
     }
 
     render() { 

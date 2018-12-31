@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import Axios from 'axios';
 import { Row, Col, Label , ControlLabel, FormControl } from 'react-bootstrap';
 import Card from './Card';
+import { loadSchedule } from '../api';
+
+const days = ['sunday','monday','tuesday','wednesday','thursday','friday','saturday'];
 
 class Home extends Component {
     constructor(props){
@@ -13,25 +15,18 @@ class Home extends Component {
     }
 
     componentDidMount() {
-        this.loadSchedule(this.state.currentDay);
+        loadSchedule(this.state.currentDay)
+            .then(res => {
+                this.setState({
+                    dataDay: res.data[this.state.currentDay]
+                })
+            });
     }
 
     getDay() {
         let date = new Date();
         let today = date.getDay();
-        let days = ['sunday','monday','tuesday','wednesday','thursday','friday','saturday'];
         return days[today];
-    }
-
-    loadSchedule(day) {
-        Axios({
-            method: 'GET',
-            url: 'https://api.jikan.moe/v3/schedule/' + day
-        }).then(res=>{
-            this.setState({
-                dataDay: res.data[day]
-            })
-        })
     }
 
     selectDay = e => {
@@ -39,7 +34,12 @@ class Home extends Component {
             this.setState({
                 currentDay: e.currentTarget.value
             })
-            this.loadSchedule(e.currentTarget.value);
+            loadSchedule(e.currentTarget.value)
+                .then(res => {
+                    this.setState({
+                        dataDay: res.data[this.state.currentDay]
+                    })
+                })
         }
     }
 
