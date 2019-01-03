@@ -25,8 +25,8 @@ class App extends Component {
         <Router>
           <React.Fragment>
             <Header />
-            <Route exact path="/" render={(props) => <Home {...props} getDetails={this.getDetails} />}/>
-            <Route path="/details" render={(props) => <Details {...props} dataDetails={this.state.dataDetails} />}/>
+            <Route exact path="/crunchyroll-competitor" render={(props) => <Home {...props} getDetails={this.getDetails} />}/>
+            <Route path="/crunchyroll-competitor/details" render={(props) => <Details {...props} dataDetails={this.state.dataDetails} />}/>
           </React.Fragment>
         </Router>
       </Grid>
