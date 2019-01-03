@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/crunchyroll-competitor/precache-manifest.a0730a0038462b5b6c859aba9f05a1c5.js"
+  "/crunchyroll-competitor/precache-manifest.cbda788c305541c170c8bc75ad1850e3.js"
 );
 
 workbox.clientsClaim();
